@@ -2,7 +2,7 @@ function Card ({ item }) {
   const { title, image, price } = item
 
   return (
-    <div className='card m-2' style={{ width: '15rem', height: '25rem' }}>
+    <div className='card my-2' style={{ width: '15rem', height: '25rem' }}>
       <img
         className='card-img-top img-fluid h-75'
         style={{ 'object-fit': 'contain', 'max-width': '100%' }}
