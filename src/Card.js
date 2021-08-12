@@ -5,7 +5,7 @@ function Card ({ item }) {
     <div className='card my-2' style={{ width: '15rem', height: '25rem' }}>
       <img
         className='card-img-top img-fluid h-75'
-        style={{ 'object-fit': 'contain', 'max-width': '100%' }}
+        style={{ objectFit: 'contain', maxWidth: '100%' }}
         src={image}
         alt={title}
       />
