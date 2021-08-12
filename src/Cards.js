@@ -5,8 +5,10 @@ function Cards ({ items }) {
   const cards = items.map(item => <Card item={item} />)
 
   return (
-    <div className='container'>
-      <div className='d-flex flex-wrap flex-sm-row flex-column'>{cards}</div>
+    <div className='container my-4'>
+      <div className='d-flex flex-wrap flex-sm-row flex-column justify-content-around'>
+        {cards}
+      </div>
     </div>
   )
 }
