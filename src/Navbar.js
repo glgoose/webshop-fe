@@ -2,7 +2,7 @@ function Navbar () {
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
       <div className='container d-flex'>
-        <a className='navbar-brand' href='#'>
+        <a className='navbar-brand' href='/'>
           webshop
         </a>
         <form className='d-flex flex-grow-1'>
