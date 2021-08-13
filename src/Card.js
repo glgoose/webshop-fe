@@ -1,8 +1,15 @@
+import CardOverlay from './CardOverlay'
+import { useState } from 'react'
+
 function Card ({ item }) {
   const { title, image, price } = item
+  const [isVisible, setIsVisible] = useState(false)
+
+  const toggleVisibility = () => setIsVisible(!isVisible)
 
   return (
-    <div className='card my-2' style={{ width: '15rem', height: '25rem' }}>
+    <div onMouseOver={toggleVisibility} onMouseOut={toggleVisibility} className='card my-2' style={{ width: '15rem', height: '25rem' }}>
+      <CardOverlay isVisible={isVisible} />
       <img
         className='card-img-top img-fluid h-75'
         style={{ objectFit: 'contain', maxWidth: '100%' }}
