@@ -1,9 +1,9 @@
 import Button from 'react-bootstrap/Button'
 
-function CardOverLay ({ isVisible }) {
+function CardOverLay () {
   return (
     <div
-      className={`${isVisible ? 'visible' : 'invisible'} position-absolute bg-light opacity-75 w-100 h-75 top-0 start-0 d-flex justify-content-center align-items-center`}
+      className='overlay position-absolute bg-light opacity-75 w-100 h-75 top-0 start-0 d-flex justify-content-center align-items-center'
     >
       <Button variant='info'>
         <i class='bi bi-cart-plus'></i>

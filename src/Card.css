@@ -1,0 +1,7 @@
+.overlay {
+	visibility: hidden;
+}
+
+.card:hover > .overlay {
+	visibility: visible;
+}
