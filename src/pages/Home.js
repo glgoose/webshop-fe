@@ -1,4 +1,4 @@
-import Cards from './Cards'
+import Cards from '../Cards'
 
 function Home ({ products, addToCart }) {
   return (
