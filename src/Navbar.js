@@ -1,10 +1,12 @@
+import { Link } from 'react-router-dom'
+
 function Navbar () {
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
       <div className='container d-flex'>
-        <a className='navbar-brand' href='/'>
+        <Link to='/' className='navbar-brand'>
           webshop
-        </a>
+        </Link>
         <form className='d-flex flex-grow-1'>
           <div className='input-group'>
             <input
@@ -18,9 +20,10 @@ function Navbar () {
             </button>
           </div>
         </form>
-        <button className='btn btn-outline-info ms-2 fw-bold'>
+
+        <Link to='/cart' className='btn btn-outline-info ms-2 fw-bold'>
           <i className='bi bi-cart'></i>
-        </button>
+        </Link>
       </div>
     </nav>
   )
