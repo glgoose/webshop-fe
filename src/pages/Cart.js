@@ -16,6 +16,9 @@ function Cart ({ products }) {
       <td className='text-end'>€ {product.quantity * product.price}</td>
     </tr>
   ))
+
+  const priceTotal = products.reduce((pv, cv) => pv + cv.price, 0)
+
   return (
     <>
       <h1>Cart</h1>
@@ -32,7 +35,15 @@ function Cart ({ products }) {
             </th>
           </tr>
         </thead>
-        {rows}
+        <tbody>{rows}</tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td className='text-end'>Total</td>
+            <td className='text-end'>€ {priceTotal}</td>
+          </tr>
+        </tfoot>
       </table>
     </>
   )
