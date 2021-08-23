@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button'
 
-function CardOverLay () {
-	const clickHandler = () => console.log('add to cart')
+function CardOverLay ({ id, addToCart}) {
+	const clickHandler = () => addToCart(id)
 
   return (
     <div
@@ -9,7 +9,7 @@ function CardOverLay () {
 			style={{'--bs-bg-opacity': '.85'}}
     >
       <Button variant='info' size='lg' onClick={clickHandler}> 
-        <i class='bi bi-cart-plus'></i>
+        <i className='bi bi-cart-plus'></i>
       </Button>
     </div>
   )

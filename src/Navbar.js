@@ -19,7 +19,7 @@ function Navbar () {
           </div>
         </form>
         <button className='btn btn-outline-info ms-2 fw-bold'>
-          <i class='bi bi-cart'></i>
+          <i className='bi bi-cart'></i>
         </button>
       </div>
     </nav>

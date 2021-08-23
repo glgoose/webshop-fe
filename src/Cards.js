@@ -1,8 +1,10 @@
 import Card from './Card'
 
-function Cards ({ items }) {
+function Cards ({ items, addToCart }) {
   console.log(items)
-  const cards = items.map(item => <Card item={item} />)
+  const cards = items.map(item => (
+    <Card key={item._id} id={item._id} item={item} addToCart={addToCart} />
+  ))
 
   return (
     <div className='container my-4'>
