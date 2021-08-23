@@ -1,14 +1,22 @@
 import './App.css'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { useState } from 'react'
 import Navbar from './Navbar'
 import Home from './pages/Home'
 import Cart from './pages/Cart'
 import products from './dummyData.json'
 
 function App () {
-  // const [cart, setCart] = useState([])
+  const [cart, setCart] = useState([])
 
-  const addToCart = id => console.log('add to cart: ' + id)
+  const getProductById = id => products.find(product => product._id === id)
+
+  const addToCart = id => {
+    const product = getProductById(id)
+    product.quantity = 1
+    setCart(prevCart => [...prevCart, product])
+  }
+
   return (
     <Router>
       <header>
@@ -21,7 +29,7 @@ function App () {
             <Home products={products} addToCart={addToCart} />
           </Route>
           <Route path='/cart'>
-            <Cart />
+            <Cart products={cart} />
           </Route>
         </div>
       </main>
