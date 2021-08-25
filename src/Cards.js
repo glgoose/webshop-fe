@@ -1,8 +1,8 @@
 import Card from './Card'
 
-function Cards ({ products, addToCart }) {
+function Cards ({ products, cartDispatch }) {
   const cards = [...products.entries()].map(([id, product]) => (
-    <Card key={id} product={product} addToCart={addToCart} />
+    <Card key={id} product={product} cartDispatch={cartDispatch} />
   ))
 
   return (

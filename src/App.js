@@ -1,6 +1,6 @@
 import './App.css'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import { useState } from 'react'
+import { useReducer } from 'react'
 import Navbar from './Navbar'
 import Home from './pages/Home'
 import Cart from './pages/Cart'
@@ -8,27 +8,37 @@ import dummyData from './dummyData.json'
 
 const products = new Map()
 
-dummyData.forEach(item => {
-  const { _id: key, ...values } = item
-  products.set(key, values)
-})
+dummyData.forEach(item => products.set(item._id, item))
+
+function cartReducer (cart, { type, payload }) {
+  let { product, quantity } = payload
+
+  const updateQuantity = (cart, callback) => {
+    const prevQuantity = new Map(cart).get(product)
+    const newQuantity = callback(prevQuantity)
+    return new Map(cart).set(product, newQuantity)
+  }
+
+  switch (type) {
+    case 'ADD':
+      if (cart.has(product)) {
+        return updateQuantity(cart, prevQuantity => prevQuantity + 1)
+      }
+      const initQuantity = 1
+      return new Map([...cart, [product, initQuantity]])
+    case 'REMOVE':
+      const newCart = new Map(cart)
+      newCart.delete(product)
+      return newCart
+    case 'UPDATE':
+      return new Map(cart).set(product, quantity)
+    default:
+      throw new Error()
+  }
+}
 
 function App () {
-  const [cart, setCart] = useState(new Map())
-
-  const addToCart = product => {
-    if (cart.has(product)) return console.log('product already in cart')
-    const quantity = 1
-    setCart(prevState => new Map([...prevState, [product, quantity]]))
-  }
-
-  const removeFromCart = product => {
-    setCart(prevState => {
-      const newState = new Map(prevState)
-      newState.delete(product)
-      return newState
-    })
-  }
+  const [cart, cartDispatch] = useReducer(cartReducer, new Map())
 
   return (
     <Router>
@@ -39,10 +49,10 @@ function App () {
       <main>
         <div className='container my-4'>
           <Route exact path='/'>
-            <Home products={products} addToCart={addToCart} />
+            <Home products={products} cartDispatch={cartDispatch} />
           </Route>
           <Route path='/cart'>
-            <Cart cart={cart} removeFromCart={removeFromCart} />
+            <Cart cart={cart} cartDispatch={cartDispatch} />
           </Route>
         </div>
       </main>

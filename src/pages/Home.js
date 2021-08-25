@@ -1,7 +1,7 @@
 import Cards from '../Cards'
 
-function Home ({ products, addToCart }) {
-  return <Cards products={products} addToCart={addToCart} />
+function Home ({ products, cartDispatch }) {
+  return <Cards products={products} cartDispatch={cartDispatch} />
 }
 
 export default Home

@@ -1,10 +1,10 @@
 import CardOverlay from './CardOverlay'
 import './Card.css'
 
-function Card ({ product, addToCart }) {
+function Card ({ product, cartDispatch }) {
   return (
     <div className='card my-2' style={{ width: '15rem', height: '25rem' }}>
-      <CardOverlay product={product} addToCart={addToCart} />
+      <CardOverlay product={product} cartDispatch={cartDispatch} />
       <img
         className='card-img-top img-fluid h-75'
         style={{ objectFit: 'contain', maxWidth: '100%' }}

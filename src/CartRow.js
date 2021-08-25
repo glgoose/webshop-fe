@@ -2,9 +2,14 @@ import styles from './CartRow.module.css'
 import { FiTrash } from 'react-icons/fi'
 import { FiMinusCircle, FiPlusCircle } from 'react-icons/fi'
 
-const CartRow = ({ product, quantity, removeFromCart }) => {
-  const clickHandler = () => removeFromCart(product)
-  // const inputChangeHandler = quantity => updateQuantity(() => quantity)
+const CartRow = ({ product, quantity, cartDispatch }) => {
+  const rmClickHandler = () =>
+    cartDispatch({ type: 'REMOVE', payload: { product } })
+
+  const inputChangeHandler = e => {
+    const quantity = e.target.value
+    cartDispatch({ type: 'UPDATE', payload: { product, quantity } })
+  }
 
   return (
     <tr key={product._id} className={styles.row}>
@@ -21,7 +26,7 @@ const CartRow = ({ product, quantity, removeFromCart }) => {
       <td className='align-middle'>
         <FiMinusCircle />
         <input
-          // onChange={inputChangeHandler}
+          onChange={inputChangeHandler}
           type='number'
           min='0'
           value={quantity}
@@ -35,7 +40,7 @@ const CartRow = ({ product, quantity, removeFromCart }) => {
       <td className='align-middle text-muted' style={{ width: '1em' }}>
         <FiTrash
           className={`${styles.removeIcon} bi bi-trash`}
-          onClick={clickHandler}
+          onClick={rmClickHandler}
         />
       </td>
     </tr>

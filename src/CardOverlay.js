@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button'
 
-function CardOverLay ({ product, addToCart }) {
-  const clickHandler = () => addToCart(product)
+function CardOverLay ({ product, cartDispatch }) {
+  const clickHandler = () => cartDispatch({ type: 'ADD', payload: { product } })
 
   return (
     <div

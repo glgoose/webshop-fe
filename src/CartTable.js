@@ -1,17 +1,19 @@
 import CartRow from './CartRow'
 
-function CartTable ({ cart, removeFromCart }) {
+function CartTable ({ cart, cartDispatch }) {
   const rows = [...cart.entries()].map(([product, quantity]) => (
     <CartRow
       key={product._id}
       product={product}
       quantity={quantity}
-      removeFromCart={removeFromCart}
+      cartDispatch={cartDispatch}
     />
   ))
 
-  const products = [...cart.keys()]
-  const priceTotal = products.reduce((pv, cv) => pv + cv.price, 0)
+  const subtotals = [...cart.entries()].map(
+    ([product, quantity]) => product.price * quantity
+  )
+  const priceTotal = subtotals.reduce((total, cv) => total + cv, 0)
 
   return (
     <table className='table mt-5'>
