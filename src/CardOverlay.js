@@ -1,14 +1,14 @@
 import Button from 'react-bootstrap/Button'
 
-function CardOverLay ({ id, addToCart}) {
-	const clickHandler = () => addToCart(id)
+function CardOverLay ({ product, addToCart }) {
+  const clickHandler = () => addToCart(product)
 
   return (
     <div
-      className='overlay position-absolute bg-light w-100 h-75 top-0 start-0 d-flex justify-content-center align-items-center' 
-			style={{'--bs-bg-opacity': '.85'}}
+      className='overlay position-absolute bg-light w-100 h-75 top-0 start-0 d-flex justify-content-center align-items-center'
+      style={{ '--bs-bg-opacity': '.85' }}
     >
-      <Button variant='info' size='lg' onClick={clickHandler}> 
+      <Button variant='info' size='lg' onClick={clickHandler}>
         <i className='bi bi-cart-plus'></i>
       </Button>
     </div>

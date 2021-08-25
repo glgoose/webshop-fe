@@ -1,0 +1,4 @@
+.removeIcon:hover {
+	color: var(--bs-red);
+	cursor: pointer;
+}
