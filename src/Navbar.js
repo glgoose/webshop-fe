@@ -21,17 +21,17 @@ function Navbar ({ itemsInCartCount }) {
             </button>
           </div>
         </form>
-        <div className='d-flex align-items-center position-relative ms-3'>
-          <Link to='/cart'>
+        <Link to='/cart' className='ms-3'>
+          <div className='d-flex align-items-center position-relative'>
             <IoCartOutline size='1.5em' color='var(--bs-dark)' />
-          </Link>
-          <span
-            className='position-absolute top-0 start-100 translate-middle bg-primary badge rounded-pill'
-            style={{ fontSize: '0.75rem' }}
-          >
-            {itemsInCartCount}
-          </span>
-        </div>
+            <span
+              className='position-absolute top-0 start-100 translate-middle bg-primary badge rounded-pill'
+              style={{ fontSize: '0.75rem' }}
+            >
+              {itemsInCartCount}
+            </span>
+          </div>
+        </Link>
       </div>
     </nav>
   )
