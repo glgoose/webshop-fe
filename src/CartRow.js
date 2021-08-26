@@ -14,7 +14,7 @@ const CartRow = ({ product, quantity, cartDispatch }) => {
 
   return (
     <tr key={product._id} className={styles.row}>
-      <td scope='row'>
+      <td>
         <div className='d-flex align-items-center align-middle'>
           <img
             src={product.image}
