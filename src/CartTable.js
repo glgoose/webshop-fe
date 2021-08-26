@@ -33,10 +33,11 @@ function CartTable ({ cart, cartDispatch }) {
       <tbody>{rows}</tbody>
       <tfoot>
         <tr>
-          <td></td>
-          <td></td>
+          <td />
+          <td />
           <td className='text-end'>Total</td>
           <td className='text-end'>€ {priceTotal}</td>
+          <td />
         </tr>
       </tfoot>
     </table>
