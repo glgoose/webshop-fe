@@ -1,4 +1,5 @@
 import Button from 'react-bootstrap/Button'
+import { IoCartOutline } from 'react-icons/io5'
 
 function CardOverLay ({ product, cartDispatch }) {
   const clickHandler = () => cartDispatch({ type: 'ADD', payload: { product } })
@@ -9,7 +10,7 @@ function CardOverLay ({ product, cartDispatch }) {
       style={{ '--bs-bg-opacity': '.85' }}
     >
       <Button variant='info' size='lg' onClick={clickHandler}>
-        <i className='bi bi-cart-plus'></i>
+        + <IoCartOutline size='1.6rem' />
       </Button>
     </div>
   )
