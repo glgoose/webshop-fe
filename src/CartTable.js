@@ -16,15 +16,14 @@ function CartTable ({ cart, cartDispatch }) {
   const priceTotal = subtotals.reduce((total, cv) => total + cv, 0)
 
   return (
-    <table className='table mt-5'>
+    <table className='table mt-4'>
       <thead>
         <tr>
-          <th scope='col-6'>Products</th>
-          <th scope='col-1'>Quantity</th>
-          <th scope='col-3' className='text-end'>
-            Price
+          <th scope='col' className='col-9'>
+            Products
           </th>
-          <th scope='col-2' className='text-end'>
+          <th scope='col'>Quantity</th>
+          <th scope='col' className='text-end'>
             Subtotal
           </th>
           <th></th>
@@ -32,11 +31,10 @@ function CartTable ({ cart, cartDispatch }) {
       </thead>
       <tbody>{rows}</tbody>
       <tfoot>
-        <tr>
+        <tr className='bg-light'>
           <td />
-          <td />
-          <td className='text-end'>Total</td>
-          <td className='text-end'>€ {priceTotal}</td>
+          <td className='text-end fw-bold'>Total</td>
+          <td className='text-end fw-bold'>€ {priceTotal}</td>
           <td />
         </tr>
       </tfoot>

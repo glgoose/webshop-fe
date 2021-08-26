@@ -8,21 +8,26 @@ const CartRow = ({ product, quantity, cartDispatch }) => {
 
   const inputChangeHandler = e => {
     const quantity = Number(e.target.value)
-    cartDispatch({ type: 'UPDATE', payload: { product, quantity } })
+    if (quantity === 0)
+      return cartDispatch({ type: 'REMOVE', payload: { product } })
+    return cartDispatch({ type: 'UPDATE', payload: { product, quantity } })
   }
 
   return (
     <tr key={product._id} className={styles.row}>
-      <th scope='row'>
+      <td scope='row'>
         <div className='d-flex align-items-center align-middle'>
           <img
             src={product.image}
             alt='product.title'
-            style={{ width: '50px', height: '50px', objectFit: 'contain' }}
+            style={{ width: '75px', height: '75px', objectFit: 'contain' }}
           />
-          <div className='ms-1'>{product.title}</div>
+          <div className='ms-2'>
+            <div className='fs-6 mb-1'>{product.title}</div>
+            <div className='text-muted'>€ {product.price}</div>
+          </div>
         </div>
-      </th>
+      </td>
       <td className='align-middle'>
         <input
           onChange={inputChangeHandler}
@@ -33,7 +38,6 @@ const CartRow = ({ product, quantity, cartDispatch }) => {
           style={{ width: '5ch' }}
         />
       </td>
-      <td className='text-end align-middle'>€ {product.price}</td>
       <td className='text-end align-middle'>€ {quantity * product.price}</td>
       <td className='align-middle text-muted' style={{ width: '1em' }}>
         <FiTrash
