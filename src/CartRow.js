@@ -7,7 +7,7 @@ const CartRow = ({ product, quantity, cartDispatch }) => {
     cartDispatch({ type: 'REMOVE', payload: { product } })
 
   const inputChangeHandler = e => {
-    const quantity = e.target.value
+    const quantity = Number(e.target.value)
     cartDispatch({ type: 'UPDATE', payload: { product, quantity } })
   }
 
@@ -24,16 +24,14 @@ const CartRow = ({ product, quantity, cartDispatch }) => {
         </div>
       </th>
       <td className='align-middle'>
-        <FiMinusCircle />
         <input
           onChange={inputChangeHandler}
           type='number'
           min='0'
           value={quantity}
           className='text-center mx-2'
-          style={{ width: '4ch' }}
+          style={{ width: '5ch' }}
         />
-        <FiPlusCircle />
       </td>
       <td className='text-end align-middle'>€ {product.price}</td>
       <td className='text-end align-middle'>€ {quantity * product.price}</td>
