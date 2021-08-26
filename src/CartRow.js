@@ -1,6 +1,5 @@
 import styles from './CartRow.module.css'
 import { FiTrash } from 'react-icons/fi'
-import { FiMinusCircle, FiPlusCircle } from 'react-icons/fi'
 
 const CartRow = ({ product, quantity, cartDispatch }) => {
   const rmClickHandler = () =>
