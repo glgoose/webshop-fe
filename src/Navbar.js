@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { IoCartOutline } from 'react-icons/io5'
+import { IoCartOutline, IoSearch } from 'react-icons/io5'
 
 function Navbar ({ itemsInCartCount }) {
   return (
@@ -17,7 +17,7 @@ function Navbar ({ itemsInCartCount }) {
               aria-label='Search'
             />
             <button className='btn btn-outline-secondary' type='submit'>
-              <i className='bi bi-search'></i>
+              <IoSearch size='1.3rem' />
             </button>
           </div>
         </form>
