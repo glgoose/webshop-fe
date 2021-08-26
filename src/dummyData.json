@@ -226,21 +226,6 @@
   },
   {
     "price": 65,
-    "_id": "610cef25486d42099f5d3e05",
-    "title": "Vans Classic Slip-On",
-    "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vans.co.uk%2Fshop%2Fen-gb%2Fvans-gb%2Fmen%2Fclassic-slip-on-shoes-vn000eyebka&psig=AOvVaw02Fu3HzGJc2CITutbJ1DPK&ust=1628321336561000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLiC-ujvm_ICFQAAAAAdAAAAABAE",
-    "description": "Accusamus accusamus reiciendis rem. Et praesentium occaecati dolor soluta sed quisquam rerum culpa. Sed rerum possimus occaecati. Esse rem voluptatem. Est id blanditiis numquam. Dolores sit quia et voluptatem laborum modi.",
-    "category": {
-      "_id": "610cee7d0d7c140922405370",
-      "title": "Shoes",
-      "slug": "shoes",
-      "__v": 0
-    },
-    "createdAt": "2020-10-28T04:56:12.051Z",
-    "__v": 0
-  },
-  {
-    "price": 65,
     "_id": "610cef26486d42099f5d3e35",
     "title": "Vintage Wrangler Jeans Black Denim",
     "image": "https://i.etsystatic.com/6419512/r/il/efabe4/1230910916/il_794xN.1230910916_rxv7.jpg",
