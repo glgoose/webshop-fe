@@ -39,11 +39,13 @@ function cartReducer (cart, { type, payload }) {
 
 function App () {
   const [cart, cartDispatch] = useReducer(cartReducer, new Map())
+  const quantities = [...cart.values()]
+  const itemsInCartCount = quantities.reduce((total, cv) => total + cv, 0)
 
   return (
     <Router>
       <header>
-        <Navbar />
+        <Navbar itemsInCartCount={itemsInCartCount} />
       </header>
 
       <main>
