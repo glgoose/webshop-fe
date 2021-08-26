@@ -21,9 +21,9 @@ function cartReducer (cart, { type, payload }) {
 
   switch (type) {
     case 'ADD':
-      if (cart.has(product)) {
+      if (cart.has(product))
         return updateQuantity(cart, prevQuantity => prevQuantity + 1)
-      }
+
       const initQuantity = 1
       return new Map([...cart, [product, initQuantity]])
     case 'REMOVE':
@@ -31,7 +31,7 @@ function cartReducer (cart, { type, payload }) {
       newCart.delete(product)
       return newCart
     case 'UPDATE':
-      return new Map(cart).set(product, quantity)
+      return updateQuantity(cart, () => quantity)
     default:
       throw new Error()
   }
