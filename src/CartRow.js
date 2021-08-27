@@ -7,8 +7,8 @@ const CartRow = ({ product, quantity, cartDispatch }) => {
 
   const inputChangeHandler = e => {
     const quantity = Number(e.target.value)
-    if (quantity === 0)
-      return cartDispatch({ type: 'REMOVE', payload: { product } })
+    if (quantity < 1) return
+
     return cartDispatch({ type: 'UPDATE', payload: { product, quantity } })
   }
 
@@ -31,7 +31,7 @@ const CartRow = ({ product, quantity, cartDispatch }) => {
         <input
           onChange={inputChangeHandler}
           type='number'
-          min='0'
+          min='1'
           value={quantity}
           className='text-center mx-2'
           style={{ width: '5ch' }}
