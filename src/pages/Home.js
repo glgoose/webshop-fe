@@ -1,6 +1,6 @@
 import Cards from '../Cards'
 import { DropdownButton, Dropdown } from 'react-bootstrap'
-import { useState, useEffect, useMemo } from 'react'
+import { useState, useMemo } from 'react'
 
 function shuffleArray (arr) {
   const shuffled = [...arr]
@@ -17,10 +17,8 @@ const sortByFields = {
   PRICE_DESC: 'Price: High to Low'
 }
 
-function Home ({ products, cartDispatch }) {
+function Home ({ products, isLoaded, error, cartDispatch }) {
   const [sortBy, setSort] = useState(sortByFields.RANDOM)
-
-  useEffect(() => console.log(sortBy), [sortBy])
 
   const sortedProducts = useMemo(() => {
     const sortedProducts = [...products.values()]
@@ -36,6 +34,8 @@ function Home ({ products, cartDispatch }) {
     }
   }, [products, sortBy])
 
+  if (!isLoaded) return <div>Loading...</div>
+  if (error) return <div>{error.message}</div>
   return (
     <>
       <div className='row mb-2'>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { IoCartOutline, IoSearch } from 'react-icons/io5'
+import { IoCartOutline, IoSearch, IoPersonCircleOutline } from 'react-icons/io5'
 
 function Navbar ({ itemsInCartCount }) {
   return (
@@ -21,7 +21,10 @@ function Navbar ({ itemsInCartCount }) {
             </button>
           </div>
         </form>
-        <Link to='/cart' className='ms-3'>
+        <Link to='/dashboard' className='ms-3'>
+          <IoPersonCircleOutline color='var(--bs-dark' size='1.7em' />
+        </Link>
+        <Link to='/cart' className='ms-2'>
           <div className='d-flex align-items-center position-relative'>
             <IoCartOutline size='1.5em' color='var(--bs-dark)' />
             <span
