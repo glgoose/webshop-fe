@@ -1,15 +1,7 @@
 import Cards from '../Cards'
 import { DropdownButton, Dropdown } from 'react-bootstrap'
 import { useState, useMemo } from 'react'
-
-function shuffleArray (arr) {
-  const shuffled = [...arr]
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    ;[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]
-  }
-  return shuffled
-}
+import shuffle from 'lodash/fp/shuffle'
 
 const sortByFields = {
   RANDOM: 'Random',
@@ -29,7 +21,7 @@ function Home ({ products, isLoaded, error, cartDispatch }) {
       case sortByFields.PRICE_DESC:
         return sortedProducts.sort((pv, cv) => cv.price - pv.price)
       case sortByFields.RANDOM:
-        return shuffleArray(sortedProducts)
+        return shuffle(sortedProducts)
       default:
     }
   }, [products, sortBy])
