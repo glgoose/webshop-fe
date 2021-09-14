@@ -1,20 +1,34 @@
 import { Link } from 'react-router-dom'
 import { IoCartOutline, IoSearch, IoPersonCircleOutline } from 'react-icons/io5'
+import { useState } from 'react'
 
-function Navbar ({ itemsInCartCount }) {
+function Navbar ({ itemsInCartCount, onSearch }) {
+  const [query, setQuery] = useState('')
+
+  const inputHandler = e => {
+    const val = e.target.value
+    setQuery(() => val)
+  }
+
+  const searchHandler = e => {
+    e.preventDefault()
+    onSearch(query)
+  }
+
   return (
     <nav className='navbar navbar-expand-lg navbar-light bg-light'>
       <div className='container d-flex align-items-center'>
         <Link to='/' className='navbar-brand'>
           webshop
         </Link>
-        <form className='d-flex flex-grow-1'>
+        <form className='d-flex flex-grow-1' onSubmit={searchHandler}>
           <div className='input-group'>
             <input
               className='form-control flex-grow-1'
               type='search'
               placeholder='Search'
               aria-label='Search'
+              onInput={inputHandler}
             />
             <button className='btn btn-outline-secondary' type='submit'>
               <IoSearch size='1.3rem' />

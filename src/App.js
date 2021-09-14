@@ -42,7 +42,8 @@ function cartReducer (cart, { type, payload }) {
 function App () {
   const [error, setError] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
-  const [products, setProducts] = useState(new Map())
+  const [products, setProducts] = useState([])
+  const [foundProducts, setFoundProducts] = useState([])
 
   const [cart, cartDispatch] = useReducer(cartReducer, new Map())
 
@@ -58,11 +59,10 @@ function App () {
     fetch('https://webshop-rest-api.herokuapp.com/products')
       .then(res => res.json())
       .then(
-        items => {
-          const products = new Map()
-          items.forEach(item => products.set(item._id, item))
+        products => {
           setIsLoaded(true)
           setProducts(products)
+          setFoundProducts(products)
         },
         err => {
           setIsLoaded(true)
@@ -78,17 +78,26 @@ function App () {
     setUser(user)
   }
 
+  const onSearch = query => {
+    if (query === '') setFoundProducts(() => products)
+    setFoundProducts(() =>
+      products.filter(product =>
+        product.title.toLowerCase().includes(query.toLowerCase())
+      )
+    )
+  }
+
   return (
     <Router>
       <header>
-        <Navbar itemsInCartCount={itemsInCartCount} />
+        <Navbar itemsInCartCount={itemsInCartCount} onSearch={onSearch} />
       </header>
 
       <main>
         <div className='container my-4'>
           <Route exact path='/'>
             <Home
-              products={products}
+              products={foundProducts}
               isLoaded={isLoaded}
               error={error}
               cartDispatch={cartDispatch}

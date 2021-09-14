@@ -21,7 +21,7 @@ function Home ({ products, isLoaded, error, cartDispatch }) {
   const [sortBy, setSort] = useState(sortByFields.RANDOM)
 
   const sortedProducts = useMemo(() => {
-    const sortedProducts = [...products.values()]
+    const sortedProducts = [...products]
 
     switch (sortBy) {
       case sortByFields.PRICE_ASC:
@@ -40,7 +40,7 @@ function Home ({ products, isLoaded, error, cartDispatch }) {
     <>
       <div className='row mb-2'>
         <div className='col-6'>
-          <b>{products.size}</b> results
+          <b>{products.length}</b> results
         </div>
         <div className='col-6 text-end d-flex justify-content-end align-items-center'>
           Sort:
