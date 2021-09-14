@@ -41,12 +41,14 @@ function Navbar ({ itemsInCartCount, onSearch }) {
         <Link to='/cart' className='ms-2'>
           <div className='d-flex align-items-center position-relative'>
             <IoCartOutline size='1.5em' color='var(--bs-dark)' />
-            <span
-              className='position-absolute top-0 start-100 translate-middle bg-primary badge rounded-pill'
-              style={{ fontSize: '0.75rem' }}
-            >
-              {itemsInCartCount}
-            </span>
+            {itemsInCartCount !== 0 && (
+              <span
+                className='position-absolute top-0 start-100 translate-middle bg-primary badge rounded-pill'
+                style={{ fontSize: '0.75rem' }}
+              >
+                {itemsInCartCount}
+              </span>
+            )}
           </div>
         </Link>
       </div>
